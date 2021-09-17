@@ -22,7 +22,7 @@ namespace メビウス育成
         }
     };
 
-    public class MEBIUS
+    public class Mebius
     {
         public int Level { get; set; } = 0;
         public MebiusEnchantment Protection { get; set; } = new(2, 10, "ダメージ軽減");

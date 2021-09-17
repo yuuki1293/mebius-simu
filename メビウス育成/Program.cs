@@ -3,22 +3,25 @@ using System.IO;
 
 namespace メビウス育成
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            Console.WriteLine("育てる個数を入力してください");
+            var num = Convert.ToInt32(Console.ReadLine());
+            
             var レベル10が3個あるMEBIUS = 0;
             var レベル10が2個あるMEBIUS = 0;
             var レベル10が1個あるMEBIUS = 0;
             var レベル10が2個あるMEBIUS_耐久除く = 0;
             var レベル10が1個あるMEBIUS_耐久除く = 0;
             
-            for (int i = 0; i < 100000; i++)
+            for (var i = 0; i < num; i++)
             {
                 var mebius = Grow.Mine();
                 mebius.Level++;
                 Grow.LevelUp(mebius,"修繕");
-                for (int j = 0; j < 28; j++)
+                for (var j = 0; j < 28; j++)
                 {
                     Grow.RandomLevelUp(mebius);
                 }
@@ -56,11 +59,19 @@ namespace メビウス育成
                 }
                 WriteFile("MEBIUSたち.txt",mebius.ToString());
             }
+            Console.WriteLine($"育てたMEBIUSの個数:{num} 個");
+            Console.WriteLine($"レベル10が3個あるMEBIUS:{レベル10が3個あるMEBIUS} 個");
+            Console.WriteLine($"レベル10が2個あるMEBIUS:{レベル10が2個あるMEBIUS} 個");
+            Console.WriteLine($"レベル10が1個あるMEBIUS:{レベル10が1個あるMEBIUS} 個");
+            Console.WriteLine($"レベル10が2個あるMEBIUS(耐久除く):{レベル10が2個あるMEBIUS_耐久除く} 個");
+            Console.WriteLine($"レベル10が1個あるMEBIUS(耐久除く):{レベル10が1個あるMEBIUS_耐久除く} 個");
+            Console.WriteLine("キーを押して終了");
+            Console.ReadKey();
         }
 
-        static void WriteFile(string FileName, string text)
+        static void WriteFile(string fileName, string text)
         {
-            File.AppendAllText(FileName,text+Environment.NewLine);
+            File.AppendAllText(fileName,text+Environment.NewLine);
         }
     }
 }

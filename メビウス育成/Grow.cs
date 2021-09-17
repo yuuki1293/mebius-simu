@@ -6,17 +6,17 @@ namespace メビウス育成
 {
     public static class Grow
     { 
-        public static MEBIUS Mine()
+        public static Mebius Mine()
         {
-            return new MEBIUS();
+            return new Mebius();
         }
 
-        private static IEnumerable<MebiusEnchantment> UpgradableEnchants(MEBIUS mebius)
+        private static IEnumerable<MebiusEnchantment> UpgradableEnchants(Mebius mebius)
         {
             return mebius.Values.Where(i => i.UnlockLevel <= mebius.Level && i.NowLevel < i.MaxLevel);
         }
         
-        public static void RandomLevelUp(MEBIUS mebius)
+        public static void RandomLevelUp(Mebius mebius)
         {
             mebius.Level++;
             var enchants = UpgradableEnchants(mebius).ToArray();
@@ -25,7 +25,7 @@ namespace メビウス育成
             LevelUp(mebius, selectedEnchant);
         }
 
-        public static void LevelUp(MEBIUS mebius,string enchant)
+        public static void LevelUp(Mebius mebius,string enchant)
         {
             switch (enchant)
             {
