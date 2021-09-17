@@ -31,43 +31,68 @@ namespace メビウス育成
 
                 var NumOfLevel10 = Inspection.CountEnchantmentLevel10(mebius);
                 var NumOfLevel10_耐久なし = Inspection.CountEnchantmentLevel10ExceptDurability(mebius);
-
-                try
+                while (true)
                 {
-                    switch (NumOfLevel10)
+                    try
                     {
-                        case 3:
-                            レベル10が3個あるMEBIUS++;
-                            WriteFile("レベル10が3個あるMEBIUS.txt",mebius.ToString());
-                            break;
-                        case 2:
-                            レベル10が2個あるMEBIUS++;
-                            WriteFile("レベル10が2個あるMEBIUS.txt",mebius.ToString());
-                            break;
-                        case 1:
-                            レベル10が1個あるMEBIUS++;
-                            WriteFile("レベル10が1個あるMEBIUS.txt",mebius.ToString());
-                            break;
+                        switch (NumOfLevel10)
+                        {
+                            case 3:
+                                レベル10が3個あるMEBIUS++;
+                                WriteFile("レベル10が3個あるMEBIUS.txt",mebius.ToString());
+                                break;
+                            case 2:
+                                レベル10が2個あるMEBIUS++;
+                                WriteFile("レベル10が2個あるMEBIUS.txt",mebius.ToString());
+                                break;
+                            case 1:
+                                レベル10が1個あるMEBIUS++;
+                                WriteFile("レベル10が1個あるMEBIUS.txt",mebius.ToString());
+                                break;
+                        }
+                        break;
                     }
-                    switch (NumOfLevel10_耐久なし)
+                    catch (Exception)
                     {
-                        case 2:
-                            レベル10が2個あるMEBIUS_耐久除く++;
-                            WriteFile("レベル10が2個あるMEBIUS_耐久除く.txt",mebius.ToString());
-                            break;
-                        case 1:
-                            レベル10が1個あるMEBIUS_耐久除く++;
-                            WriteFile("レベル10が1個あるMEBIUS_耐久除く.txt",mebius.ToString());
-                            break;
+                        // ignored
                     }
-                    WriteFile("MEBIUSたち.txt",mebius.ToString());
-                }
-                catch (Exception)
-                {
-                    i--;
-                    continue;
                 }
 
+                while (true)
+                {
+                    try
+                    {
+                        switch (NumOfLevel10_耐久なし)
+                        {
+                            case 2:
+                                レベル10が2個あるMEBIUS_耐久除く++;
+                                WriteFile("レベル10が2個あるMEBIUS_耐久除く.txt",mebius.ToString());
+                                break;
+                            case 1:
+                                レベル10が1個あるMEBIUS_耐久除く++;
+                                WriteFile("レベル10が1個あるMEBIUS_耐久除く.txt",mebius.ToString());
+                                break;
+                        }
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        // ignore
+                    }
+                }
+
+                while (true)
+                {
+                    try
+                    {
+                        WriteFile("MEBIUSたち.txt",mebius.ToString());
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        // ignore
+                    }
+                }
                 
                 Console.Write($"\r[ {i+1} / {num} ]");
             }
