@@ -58,7 +58,11 @@ namespace メビウス育成
                         break;
                 }
                 WriteFile("MEBIUSたち.txt",mebius.ToString());
+                
+                Console.Write($"\r[ {i+1} / {num} ]");
             }
+            
+            Console.WriteLine("");
             Console.WriteLine($"育てたMEBIUSの個数:{num} 個");
             Console.WriteLine($"レベル10が3個あるMEBIUS:{レベル10が3個あるMEBIUS} 個");
             Console.WriteLine($"レベル10が2個あるMEBIUS:{レベル10が2個あるMEBIUS} 個");
