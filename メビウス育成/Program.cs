@@ -21,6 +21,11 @@ namespace メビウス育成
                 var mebius = Grow.Mine();
                 mebius.Level++;
                 Grow.LevelUp(mebius,"修繕");
+                for (int j = 0; j < 3; j++)
+                {
+                    Grow.LevelUp(mebius, "耐久力");
+                }
+
                 for (var j = 0; j < 28; j++)
                 {
                     Grow.RandomLevelUp(mebius);
