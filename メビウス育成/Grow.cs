@@ -22,10 +22,10 @@ namespace メビウス育成
             var enchants = UpgradableEnchants(mebius).ToArray();
             Random r = new();
             var selectedEnchant = enchants[r.Next(0, enchants.Length)].DisplayName;
-            LevelUp(mebius, selectedEnchant);
+            AddEnchant(mebius, selectedEnchant);
         }
 
-        public static void LevelUp(Mebius mebius,string enchant)
+        public static void AddEnchant(Mebius mebius,string enchant)
         {
             switch (enchant)
             {

@@ -9,7 +9,15 @@ namespace メビウス育成
         {
             Console.WriteLine("育てる個数を入力してください");
             var num = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("最大レベルを入力してください");
+            var maxLevel = Convert.ToInt32(Console.ReadLine());
             
+            if(maxLevel>30)
+            {
+                Console.WriteLine("30以下で入力してください");
+                return;
+            }
+
             var レベル10が3個あるMEBIUS = 0;
             var レベル10が2個あるMEBIUS = 0;
             var レベル10が1個あるMEBIUS = 0;
@@ -19,20 +27,15 @@ namespace メビウス育成
             for (var i = 0; i < num; i++)
             {
                 var mebius = Grow.Mine();
-                mebius.Level++;
-                Grow.LevelUp(mebius,"修繕");
-                for (int j = 0; j < 3; j++)
-                {
-                    Grow.LevelUp(mebius, "耐久力");
-                }
 
-                for (var j = 0; j < 28; j++)
+                for (var j = 0; j < maxLevel; j++)
                 {
                     Grow.RandomLevelUp(mebius);
-                }
 
-                mebius.Level++;
-                Grow.LevelUp(mebius,"耐久無限");
+                    if (j != 29) continue;
+                    mebius.Level++;
+                    Grow.AddEnchant(mebius, "耐久無限");
+                }
 
                 var NumOfLevel10 = Inspection.CountEnchantmentLevel10(mebius);
                 var NumOfLevel10_耐久なし = Inspection.CountEnchantmentLevel10ExceptDurability(mebius);
